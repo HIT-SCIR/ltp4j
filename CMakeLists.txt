@@ -58,12 +58,12 @@ if (WIN32)
         debug       ${LTP_HOME}/lib/Debug/srl.lib
         optimized   ${LTP_HOME}/lib/Release/srl.lib)
 else (WIN32)
-    target_link_libraries (split_sentence_jni   ${LTP_HOME}/lib/splitsnt)
-    target_link_libraries (segmentor_jni        ${LTP_HOME}/lib/segmentor)
-    target_link_libraries (postagger_jni        ${LTP_HOME}/lib/postagger)
-    target_link_libraries (ner_jni              ${LTP_HOME}/lib/ner)
-    target_link_libraries (parser_jni           ${LTP_HOME}/lib/parser)
-    target_link_libraries (srl_jni              ${LTP_HOME}/lib/srl)
+    target_link_libraries (split_sentence_jni   ${LTP_HOME}/lib/libsplitsnt.so)
+    target_link_libraries (segmentor_jni        ${LTP_HOME}/lib/libsegmentor.so)
+    target_link_libraries (postagger_jni        ${LTP_HOME}/lib/libpostagger.so)
+    target_link_libraries (ner_jni              ${LTP_HOME}/lib/libner.so)
+    target_link_libraries (parser_jni           ${LTP_HOME}/lib/libparser.so)
+    target_link_libraries (srl_jni              ${LTP_HOME}/lib/libsrl.so)
 endif (WIN32)
 
 
