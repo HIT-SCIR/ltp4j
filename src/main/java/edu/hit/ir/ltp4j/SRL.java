@@ -3,18 +3,17 @@ import java.util.List;
 
 public class SRL {
   static {
-    System.loadLibrary("srl_jni");
+    NarSystem.loadLibrary();
   }
-  public static native int create(String modelPath);
 
-  public static native int srl(
+  public final native int create(String modelPath);
+  public final native int srl(
       List<String> words,
       List<String> tags,
       List<String> ners,
       List<Integer> heads,
       List<String> deprels,
       List<Pair<Integer, List<Pair<String, Pair<Integer, Integer>>>>> srls);
-
-  public static native void release();
+  public final native void release();
 }
 

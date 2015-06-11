@@ -16,6 +16,13 @@ public class Test {
   private String parserModel;
   private String SRLModel;
 
+  private SplitSentence sentenceSplitApp;
+  private Segmentor     segmentorApp;
+  private Postagger     postaggerApp;
+  private NER           nerApp;
+  private Parser        parserApp;
+  private SRL           srlApp;
+
   private boolean ParseArguments(String[] args) {
     if (args.length == 1 && (args[0].equals("--help") || args[0].equals("-h"))) {
       Usage();
@@ -43,11 +50,22 @@ public class Test {
       throw new IllegalArgumentException("");
     }
 
-    Segmentor.create(segmentModel);
-    Postagger.create(postagModel);
-    NER.create(NERModel);
-    Parser.create(parserModel);
-    SRL.create(SRLModel);
+    sentenceSplitApp = new SplitSentence();
+
+    segmentorApp = new Segmentor();
+    segmentorApp.create(segmentModel);
+
+    postaggerApp = new Postagger();
+    postaggerApp.create(postagModel);
+
+    nerApp = new NER();
+    nerApp.create(NERModel);
+
+    parserApp = new Parser();
+    parserApp.create(parserModel);
+
+    srlApp = new SRL();
+    srlApp.create(SRLModel);
 
     return true;
   }
@@ -82,7 +100,7 @@ public class Test {
 
   public void Analyse(String sent) {
     ArrayList<String> sents = new ArrayList<String>();
-    SplitSentence.splitSentence(sent,sents);
+    sentenceSplitApp.splitSentence(sent,sents);
 
     // System.out.println("sents:"+sents.size());
 
@@ -98,16 +116,16 @@ public class Test {
       System.out.println("#" + (m+1));
       System.out.println("Sentence       : " + sents.get(m));
 
-      Segmentor.segment(sents.get(m), words);
+      segmentorApp.segment(sents.get(m), words);
       System.out.println("Segment Result : " + join(words, "\t"));
 
-      Postagger.postag(words,postags);
+      postaggerApp.postag(words,postags);
       System.out.println("Postag Result  : " + join(postags, "\t"));
 
-      NER.recognize(words,postags,ners);
+      nerApp.recognize(words,postags,ners);
       System.out.println("NER Result     : " + join(ners, "\t"));
 
-      Parser.parse(words,postags,heads,deprels);
+      parserApp.parse(words,postags,heads,deprels);
       int size = heads.size();
       StringBuilder sb = new StringBuilder();
       sb.append(heads.get(0)).append(":").append(deprels.get(0));
@@ -120,7 +138,7 @@ public class Test {
         heads.set(i, heads.get(i) - 1);
       }
 
-      SRL.srl(words,postags,ners,heads,deprels,srls);
+      srlApp.srl(words,postags,ners,heads,deprels,srls);
       size = srls.size();
       System.out.print("SRL Result     : ");
       if (size == 0) {
@@ -138,12 +156,12 @@ public class Test {
     }
   }
 
-  public static void release(){
-    Segmentor.release();
-    Postagger.release();
-    NER.release();
-    Parser.release();
-    SRL.release();
+  public void release(){
+    segmentorApp.release();
+    postaggerApp.release();
+    nerApp.release();
+    parserApp.release();
+    srlApp.release();
   }
 
   public static void main(String[] args) {
@@ -163,7 +181,7 @@ public class Test {
           }
         }
       } catch(Exception e) {
-        release();
+        test.release();
       }
     } catch (IllegalArgumentException e) {
     }
