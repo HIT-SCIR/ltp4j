@@ -95,6 +95,7 @@
               <path>src/main/c++/ltp/src</path>
               <path>src/main/c++/ltp/src/srl</path>
               <path>src/main/c++/ltp/src/utils</path>
+              <path>src/main/c++/ltp/thirdparty/boost/include</path>
               <path>src/main/c++/ltp/thirdparty/maxent</path>
               <path>src/main/c++/ltp/thirdparty/eigen-3.2.4</path>
             </includePaths>

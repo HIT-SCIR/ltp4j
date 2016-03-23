@@ -9,6 +9,6 @@ public class SRLTest {
     throws Exception
   {
     SRL app = new SRL();
-    Assert.assertEquals( 1, app.create("/home/yjliu/work/ltp/ltp/ltp_data/srl/") );
+    Assert.assertEquals( 1, app.create("ltp_data/srl/") );
   }
 }
