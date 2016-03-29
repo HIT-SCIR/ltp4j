@@ -7,7 +7,6 @@ os:
     - osx
 
 before_install:
-    - sudo apt-get install cmake
     - git submodule update
 
 install:

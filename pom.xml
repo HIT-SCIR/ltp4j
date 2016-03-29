@@ -100,6 +100,9 @@
               <path>src/main/c++/ltp/thirdparty/eigen-3.2.4</path>
             </includePaths>
             <debug>false</debug>
+            <options>
+              <option>-std=c++0x</option>
+            </options>
           </cpp>
           <c>
             <excludes>
