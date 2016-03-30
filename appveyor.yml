@@ -21,7 +21,7 @@ install:
 build_script:
   - git submodule init
   - git submodule update
-  - mvn -v
+  - mvn -X
 
 cache:
   - C:\maven\
