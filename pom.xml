@@ -80,6 +80,7 @@
               <exclude>ltp/src/parser.n/io.cpp</exclude>
               <exclude>ltp/src/parser.n/main.cpp</exclude>
               <exclude>ltp/src/parser.n/parser_frontend.cpp</exclude>
+              <exclude>ltp/src/srl/GetGetInstance.cpp</exclude>
               <exclude>ltp/src/srl/lgsrl.cpp</exclude>
               <exclude>ltp/src/server/*</exclude>
               <exclude>ltp/src/xml4nlp/*</exclude>
