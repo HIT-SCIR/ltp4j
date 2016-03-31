@@ -7,9 +7,8 @@ os:
     - osx
 
 before_script:
-    - if [[ -z "$JAVA_HOME" && -x "/usr/libexec/java_home" ]] ; then export JAVA_HOME=$(/usr/libexec/java_home); fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" && -z "$JAVA_HOME" && -x "/usr/libexec/java_home" ]] ; then export JAVA_HOME=$(/usr/libexec/java_home); fi
     - git submodule init
     - git submodule update
 
 script: mvn
-
