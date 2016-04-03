@@ -6,13 +6,9 @@ os:
     - linux
     - osx
 
-before_install:
+before_script:
+    - if [[ "$TRAVIS_OS_NAME" == "osx" && -z "$JAVA_HOME" && -x "/usr/libexec/java_home" ]] ; then export JAVA_HOME=$(/usr/libexec/java_home); fi
+    - git submodule init
     - git submodule update
 
-install:
-    - mvn
-
-script:
-    - version=`egrep '<version>' pom.xml | head -1 | tr -d ' ' | sed 's/<version>//g' | sed 's/<\/version>//g'`
-    - javac -cp "target/ltp4j-${version}.jar" examples/Test.java
-    - cat examples/example | java -Djava.library.path=target/nar/ltp4j-$version-amd64-Linux-gpp-jni/lib/amd64-Linux-gpp/jni/ -cp "target/ltp4j-${version}.jar:examples" Test --segment-model=ltp_data/cws.model --postag-model=ltp_data/pos.model --ner-model=ltp_data/ner.model --parser-model=ltp_data/parser.model --srl-dir=ltp_data/srl/
+script: mvn
