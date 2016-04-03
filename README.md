@@ -2,6 +2,7 @@ ltp4j<sup>beta</sup>: Language Technology Platform For Java
 ============================================
 
 [![Build Status](https://travis-ci.org/HIT-SCIR/ltp4j.svg?branch=integrate-test)](https://travis-ci.org/HIT-SCIR/ltp4j)
+[![Documentation Status](https://readthedocs.org/projects/ltp/badge/?version=latest)](http://ltp4j.readthedocs.org/en/neoltp4j/?badge=neoltp4j)
 
 # 简介
 
