@@ -65,7 +65,6 @@ ltp4j使用的C++代理程序使用编译工具CMake构建项目。
 CMake的网站在[这里](http://www.cmake.org)。如果你是Windows用户，请下载CMake的二进制安装包；
 如果你是Linux，Mac OS或Cygwin的用户，可以通过编译源码的方式安装CMake，当然，你也可以使用Linux的软件源来安装。
 
-### Windows(MSVC)编译
 
 第一步：配置ltp的安装路径
 
@@ -74,6 +73,8 @@ CMake的网站在[这里](http://www.cmake.org)。如果你是Windows用户，�
 对应修改的代码为：
 
 ```set (LTP_HOME "/path/to/your/ltp-project/")```
+
+### Windows(MSVC)编译
 
 第二步：构建VC Project
 
