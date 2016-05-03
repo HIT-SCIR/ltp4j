@@ -9,7 +9,7 @@ import edu.hit.ir.ltp4j.Parser;
 import edu.hit.ir.ltp4j.SRL;
 import edu.hit.ir.ltp4j.Pair;
 
-public class Test {
+public class Console {
   private String segmentModel;
   private String postagModel;
   private String NERModel;
@@ -70,20 +70,18 @@ public class Test {
     return true;
   }
 
-
   public void Usage() {
-    System.err.println("An command line example for ltp4j - The Java embedding of LTP");
-    System.err.println("Sentences are inputted from stdin.");
-    System.err.println("");
-    System.err.println("Usage:");
-    System.err.println("");
-    System.err.println("  java -cp <jar-path> --segment-model=<path> \\");
-    System.err.println("                      --postag-model=<path> \\");
-    System.err.println("                      --ner-model=<path> \\");
-    System.err.println("                      --parser-model=<path> \\");
-    System.err.println("                      --srl-dir=<path>");
+    System.out.println("An command line example for ltp4j - The Java embedding of LTP");
+    System.out.println("Sentences are inputted from stdin.");
+    System.out.println("");
+    System.out.println("Usage:");
+    System.out.println("");
+    System.out.println("  java -cp <jar-path> --segment-model=<path> \\");
+    System.out.println("                      --postag-model=<path> \\");
+    System.out.println("                      --ner-model=<path> \\");
+    System.out.println("                      --parser-model=<path> \\");
+    System.out.println("                      --srl-dir=<path>");
   }
-
 
   private String join(ArrayList<String> payload, String conjunction) {
     StringBuilder sb = new StringBuilder();
@@ -100,9 +98,7 @@ public class Test {
 
   public void Analyse(String sent) {
     ArrayList<String> sents = new ArrayList<String>();
-    sentenceSplitApp.splitSentence(sent,sents);
-
-    // System.out.println("sents:"+sents.size());
+    sentenceSplitApp.splitSentence(sent, sents);
 
     for(int m = 0; m < sents.size(); m++) {
       ArrayList<String> words = new ArrayList<String>();
@@ -113,26 +109,29 @@ public class Test {
       List<Pair<Integer, List<Pair<String, Pair<Integer, Integer>>>>> srls =
         new ArrayList<Pair<Integer, List<Pair<String, Pair<Integer, Integer>>>>>();
 
-      System.out.println("#" + (m+1));
+      System.out.println("#" + (m + 1));
       System.out.println("Sentence       : " + sents.get(m));
 
       segmentorApp.segment(sents.get(m), words);
       System.out.println("Segment Result : " + join(words, "\t"));
 
-      postaggerApp.postag(words,postags);
-      System.out.println("Postag Result  : " + join(postags, "\t"));
+      postaggerApp.postag(words, postags);
+      System.out.print("Postag Result  : ");
+      System.out.println(join(postags, "\t"));
 
-      nerApp.recognize(words,postags,ners);
-      System.out.println("NER Result     : " + join(ners, "\t"));
+      nerApp.recognize(words, postags, ners);
+      System.out.print("NER Result     : ");
+      System.out.println(join(ners, "\t"));
 
-      parserApp.parse(words,postags,heads,deprels);
+      parserApp.parse(words, postags, heads, deprels);
       int size = heads.size();
       StringBuilder sb = new StringBuilder();
       sb.append(heads.get(0)).append(":").append(deprels.get(0));
       for(int i = 1; i < heads.size(); i++) {
         sb.append("\t").append(heads.get(i)).append(":").append(deprels.get(i));
       }
-      System.out.println("Parse Result   : " + sb.toString());
+      System.out.print("Parse Result   : ");
+      System.out.println(sb.toString());
 
       for (int i = 0; i < heads.size(); i++) {
         heads.set(i, heads.get(i) - 1);
@@ -165,23 +164,25 @@ public class Test {
   }
 
   public static void main(String[] args) {
-    Test test = new Test();
+    Console console = new Console();
 
     try {
-      if (!test.ParseArguments(args)) {
+      if (!console.ParseArguments(args)) {
         return;
       }
 
       Scanner input = new Scanner(System.in);
       String sent;
       try {
-        while((sent = input.nextLine())!=null){
-          if(sent.length()>0){
-            test.Analyse(sent);
+        System.out.print(">>> ");
+        while((sent = input.nextLine()) != null) {
+          if (sent.length() > 0) {
+            console.Analyse(sent);
           }
+          System.out.print(">>> ");
         }
       } catch(Exception e) {
-        test.release();
+        console.release();
       }
     } catch (IllegalArgumentException e) {
     }
