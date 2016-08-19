@@ -12,5 +12,5 @@ ltp4j是语言技术平台[(Language Technology Platform, LTP)](https://github.c
 
 # 文档
 
-关于ltp4j的使用，请参考[ltp4j使用文档v1.0](https://github.com/HIT-SCIR/ltp4j/blob/master/doc/ltp4j-document-1.0.md)
+请参考在线文档：[ltp4j使用文档](http://ltp4j.readthedocs.io)
 
