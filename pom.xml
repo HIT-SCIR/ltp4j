@@ -82,6 +82,9 @@
               <exclude>ltp/src/parser.n/parser_frontend.cpp</exclude>
               <exclude>ltp/src/srl/GetGetInstance.cpp</exclude>
               <exclude>ltp/src/srl/lgsrl.cpp</exclude>
+              <exclude>ltp/src/lstmsdparser/main.cpp</exclude>
+              <exclude>ltp/src/lstmsdparser/lstm_par_cmdline.cpp</exclude>
+              <exclude>ltp/src/lstmsdparser/lstm-parse.cc</exclude>
               <exclude>ltp/src/server/*</exclude>
               <exclude>ltp/src/xml4nlp/*</exclude>
               <exclude>ltp/src/unittest/*</exclude>
@@ -91,6 +94,11 @@
               <exclude>ltp/thirdparty/maxent/train.cpp</exclude>
               <exclude>ltp/thirdparty/maxent/predict.cpp</exclude>
               <exclude>ltp/thirdparty/gtest/**/*</exclude>
+              <exclude>ltp/thirdparty/jsoncpp/**/*</exclude>
+              <exclude>ltp/thirdparty/cnn/cnn/tests/**/*</exclude>
+              <exclude>ltp/thirdparty/cnn/cnn/cuda.cc</exclude>
+              <exclude>ltp/thirdparty/cnn/cnn/gpu-ops.cu</exclude>
+              <exclude>ltp/thirdparty/cnn/cnn/gru.cc</exclude>
             </excludes>
             <includePaths>
               <path>src/main/c++/ltp/src</path>
@@ -98,11 +106,13 @@
               <path>src/main/c++/ltp/src/utils</path>
               <path>src/main/c++/ltp/thirdparty/boost/include</path>
               <path>src/main/c++/ltp/thirdparty/maxent</path>
-              <path>src/main/c++/ltp/thirdparty/eigen-3.2.4</path>
+              <path>src/main/c++/ltp/thirdparty/eigen-3.2.10</path>
+              <path>src/main/c++/ltp/thirdparty/cnn</path>
             </includePaths>
             <debug>false</debug>
             <options>
               <option>-std=c++0x</option>
+              <option>-w</option>
             </options>
           </cpp>
           <c>
