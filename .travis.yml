@@ -11,4 +11,5 @@ before_script:
     - git submodule init
     - git submodule update
 
-script: mvn
+script:
+    - if [["$TRAVIS_OS_NAME" == "osx"]] ; then mvn -Dmaven.test.skip=true; else mvn; fi
