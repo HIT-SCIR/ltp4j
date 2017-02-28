@@ -323,41 +323,36 @@
 
 .. code:: java
 
-	#include <iostream>
-	#include <vector>
-	#include "parser_dll.h"
+    import java.util.ArrayList;
+    import java.util.List;
+    import edu.hit.ir.ltp4j.*;
 
-	int main(int argc, char * argv[]) {
-	    if (argc < 2) {
-	        return -1;
-	    }
+    public class TestParse {
 
-	    void * engine = parser_create_parser(argv[1]);
-	    if (!engine) {
-	        return -1;
-	    }
+        public static void main(String[] args){
+            Parser parser = new Parser();
+            if(parser.create("./model/ltp_data/parser.model") < 0){
+                throw new RuntimeException("fail to load parser model");
+            }
+            List<String> words = new ArrayList<>();
+            List<String> postags = new ArrayList<>();
+            words.add("一把手");    postags.add("n");
+            words.add("亲自");      postags.add("d");
+            words.add("过河");      postags.add("v");
+            words.add("。");        postags.add("wp");
 
-	    std::vector<std::string> words;
-	    std::vector<std::string> postags;
+            List<Integer> heads = new ArrayList<>();
+            List<String> deprels = new ArrayList<>();
 
-	    words.push_back("一把手");      postags.push_back("n");
-	    words.push_back("亲自");        postags.push_back("d");
-	    words.push_back("过问");        postags.push_back("v");
-	    words.push_back("。");          postags.push_back("wp");
+            parser.parse(words, postags, heads, deprels);
 
-	    std::vector<int>            heads;
-	    std::vector<std::string>    deprels;
-
-	    parser_parse(engine, words, postags, heads, deprels);
-
-	    for (int i = 0; i < heads.size(); ++ i) {
-	        std::cout << words[i] << "\t" << postags[i] << "\t"
-	            << heads[i] << "\t" << deprels[i] << std::endl;
-	    }
-
-	    parser_release_parser(engine);
-	    return 0;
-	}
+            for(int i=0; i<heads.size(); i++){
+                System.out.println(heads.get(i));
+                System.out.println(deprels.get(i));
+            }
+            parser.release();
+        }
+    }
 
 
 语义角色标注接口
