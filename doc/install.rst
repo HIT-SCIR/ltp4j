@@ -23,7 +23,7 @@ ltp4j使用 `apache maven <https://maven.apache.org/index.html>`_ 进行构建�
 1. 在命令行下进入ltp4j所在文件夹
 2. `git submodule init`
 3. `git submodule update`
-4. `mvn`
+4. `mvn -Dmaven.test.skip=true`
 
 如果您编译提示成功同时项目根目录下包含 `target/ltp4j-{version}.jar`，证明已经编译成功。
 
