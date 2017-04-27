@@ -8,7 +8,7 @@
 static void* segmentor = NULL;
 static bool using_customized_model = false;
 
-inline void foo(){
+inline void release_segmentor(){
   if(using_customized_model)
     customized_segmentor_release_segmentor(segmentor);
   else
@@ -23,7 +23,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_Segmentor_create__Ljava_lang_String
   if(!segmentor){
     segmentor = segmentor_create_segmentor(str);
   } else{
-    foo();
+    release_segmentor();
     segmentor = segmentor_create_segmentor(str);
   }
 
@@ -46,7 +46,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_Segmentor_create__Ljava_lang_String
   if(!segmentor){
     segmentor = segmentor_create_segmentor(str_model,str_lexicon);
   } else{
-    foo();
+    release_segmentor();
     segmentor = segmentor_create_segmentor(str_model,str_lexicon);
   }
 
@@ -70,7 +70,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_Segmentor_create__Ljava_lang_String
   if(!segmentor){
     segmentor = customized_segmentor_create_segmentor(str_baseline_model, str_customized_model, str_lexicon);
   } else{
-    foo();
+    release_segmentor();
     segmentor = customized_segmentor_create_segmentor(str_baseline_model, str_customized_model, str_lexicon);
   }
 
@@ -107,7 +107,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_Segmentor_segment
 
 JNIEXPORT void JNICALL Java_edu_hit_ir_ltp4j_Segmentor_release
   (JNIEnv* env, jobject obj) {
-  foo();
+  release_segmentor();
   segmentor = NULL;
 }
 
