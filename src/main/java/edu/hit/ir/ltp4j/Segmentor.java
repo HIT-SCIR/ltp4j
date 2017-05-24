@@ -8,6 +8,7 @@ public class Segmentor {
 
   public final native int create(String modelPath);
   public final native int create(String modelPath, String lexiconPath);
+  public final native int create(String baselineModelPath, String customizedModelPath, String lexiconPath);
   public final native int segment(String sent, List<String> words);
   public final native void release();
 }
