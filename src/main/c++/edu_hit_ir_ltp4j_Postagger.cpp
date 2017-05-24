@@ -31,7 +31,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_Postagger_create__Ljava_lang_String
   (JNIEnv * env, jobject obj, jstring model_path, jstring lexicon_path) {
 
   const char * model = env->GetStringUTFChars( model_path , 0);
-  const char * lexicon = env->GetStringUTFChars( model_path , 0);
+  const char * lexicon = env->GetStringUTFChars( lexicon_path , 0);
 
   if(!postagger){
     postagger = postagger_create_postagger(model,lexicon);
