@@ -31,7 +31,7 @@ public class Test {
         NERModel = args[i].split("=")[1];
       } else if (args[i].startsWith("--parser-model=")) {
         parserModel = args[i].split("=")[1];
-      } else if (args[i].startsWith("--srl-dir=")) {
+      } else if (args[i].startsWith("--srl-model=")) {
         SRLModel = args[i].split("=")[1];
       } else {
         throw new IllegalArgumentException("Unknown options " + args[i]);
@@ -63,7 +63,7 @@ public class Test {
     System.err.println("                      --postag-model=<path> \\");
     System.err.println("                      --ner-model=<path> \\");
     System.err.println("                      --parser-model=<path> \\");
-    System.err.println("                      --srl-dir=<path>");
+    System.err.println("                      --srl-model=<path>");
   }
 
 
@@ -120,7 +120,7 @@ public class Test {
         heads.set(i, heads.get(i) - 1);
       }
 
-      SRL.srl(words,postags,ners,heads,deprels,srls);
+      SRL.srl(words,postags,heads,deprels,srls);
       size = srls.size();
       System.out.print("SRL Result     : ");
       if (size == 0) {

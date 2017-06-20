@@ -1,5 +1,5 @@
 #include "edu_hit_ir_ltp4j_SRL.h"
-#include "ltp/SRL_DLL.h"
+#include "ltp/srl_dll.h"
 #include "string_to_jstring.hpp"
 #include <vector>
 #include <string>
@@ -9,7 +9,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_create
 (JNIEnv * env, jclass obj, jstring model_path){
   const char * str = env->GetStringUTFChars( model_path , 0);
   std::string path(str);
-  int tag = SRL_LoadResource(path);
+  int tag = srl_load_resource(path);
   env->ReleaseStringUTFChars( model_path, str); 
   if(0==tag) {
     return 1;
@@ -18,7 +18,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_create
 }
 
 JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
-(JNIEnv * env, jclass obj, jobject array_words, jobject array_tags, jobject array_ners, jobject array_heads, jobject array_deprels, jobject srl_result){
+(JNIEnv * env, jclass obj, jobject array_words, jobject array_tags, jobject array_heads, jobject array_deprels, jobject srl_result){
 	
   jclass array_list = env->GetObjectClass(array_words);
   jmethodID list_construct = env->GetMethodID(array_list,"<init>","()V");
@@ -33,7 +33,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
   jclass pair = env->FindClass("edu/hit/ir/ltp4j/Pair");
   jmethodID pair_construct = env->GetMethodID(pair,"<init>","(Ljava/lang/Object;Ljava/lang/Object;)V");
 
-  std::vector<std::string> words,tags,ners,deprels;
+  std::vector<std::string> words,tags,deprels;
   std::vector<int> heads;
   std::vector<std::pair<int,std::string> > parsers;
   std::vector< std::pair< int, std::vector< std::pair<std::string, std::pair< int, int > > > > > srls;
@@ -58,16 +58,6 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
     env->ReleaseStringUTFChars( s, st); 
   }
 
-  int size_ners = env->CallIntMethod(array_ners,list_size);
-  for(int i = 0;i<size_ners;i++){
-    jobject tmp = env->CallObjectMethod(array_ners,list_get,i);
-    jstring s = reinterpret_cast<jstring> (tmp);
-    const char * st = env->GetStringUTFChars(s,0);
-    std::string s_s(st);
-    ners.push_back(s_s);
-    env->ReleaseStringUTFChars( s, st); 
-  }
-
   int size_heads = env->CallIntMethod(array_heads,list_size);
   for(int i = 0;i<size_heads;i++){
     jobject tmp = env->CallObjectMethod(array_heads,list_get,i);
@@ -89,7 +79,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
     parsers.push_back(make_pair(heads.at(i),deprels.at(i)));
   }
 
-  int len = DoSRL(words,tags,ners,parsers,srls);
+  int len = srl_dosrl(words,tags,parsers,srls);
 
   if(len<0)
     return -1;
@@ -118,6 +108,6 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
 
 JNIEXPORT void JNICALL Java_edu_hit_ir_ltp4j_SRL_release
 (JNIEnv * env, jclass obj){
-	SRL_ReleaseResource();
+	srl_release_resource();
 }
 

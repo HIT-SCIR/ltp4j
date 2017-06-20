@@ -10,7 +10,6 @@ public class SRL {
   public static native int srl(
       List<String> words,
       List<String> tags,
-      List<String> ners,
       List<Integer> heads,
       List<String> deprels,
       List<Pair<Integer, List<Pair<String, Pair<Integer, Integer>>>>> srls);

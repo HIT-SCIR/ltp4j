@@ -21,7 +21,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_create
  * Signature: (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)I
  */
 JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
-  (JNIEnv *, jclass, jobject, jobject, jobject, jobject, jobject, jobject);
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject, jobject);
 
 /*
  * Class:     edu_hit_ir_ltp4j_SRL
