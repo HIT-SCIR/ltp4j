@@ -40,6 +40,7 @@ public class Test {
 
     if (segmentModel == null || postagModel == null || NERModel == null ||
         parserModel == null || SRLModel == null) {
+      Usage();
       throw new IllegalArgumentException("");
     }
 

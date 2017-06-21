@@ -55,6 +55,16 @@ ant
 
 填好后执行run，build/jar下产生名为ltp4j.jar的jar文件。
 
+### Intellij Idea
+
+使用idea。点击ide右侧的Ant Build，导入ltp4j/build.xml。在ltp4j上点击绿色箭头编译。
+
+将项目examples和src文件夹标成"test source root"和"source root"（右键菜单）。
+将output文件夹标成"Exclude"。
+
+右上角配置java application。edit configuration，增加一个java application，配置main class 为 "Test"。
+在 program arguements 中设置命令行参数表明模型位置。
+
 ## 编译C++代理程序
 
 代理程序jni动态库依赖于ltp的动态库，请先行编译LTP。
