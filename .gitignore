@@ -17,6 +17,7 @@ cmake_install.cmake
 CmakeCache.txt
 Makefile
 libs
+target
 
 ###########
 # IDEs    #
