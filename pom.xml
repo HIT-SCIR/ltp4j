@@ -113,6 +113,7 @@
               <exclude>ltp/src/unittest/*</exclude>
               <exclude>ltp/thirdparty/boost/libs/program_options/**/*</exclude>
               <exclude>ltp/thirdparty/eigen/unsupported/**/*</exclude>
+              <exclude>ltp/thirdparty/dynet/dynet/cuda.cc</exclude>
               <exclude>ltp/thirdparty/tinyxml/*</exclude>
               <exclude>ltp/thirdparty/tinythreadpp/*</exclude>
               <exclude>ltp/thirdparty/maxent/train.cpp</exclude>
@@ -129,6 +130,7 @@
               <path>src/main/c++/ltp/thirdparty/maxent</path>
               <path>src/main/c++/ltp/thirdparty/eigen</path>
               <path>src/main/c++/ltp/thirdparty/dynet</path>
+              <path>src/main/c++/ltp/thirdparty/jsoncpp/include</path>
             </includePaths>
             <debug>false</debug>
             <options>
@@ -140,6 +142,7 @@
               <option>-Wno-conversion</option>
               <option>-Wno-shorten-64-to-32</option>
               <option>-Wno-reorder</option>
+              <!--<option>-v</option>-->
               <!--<option>-Wno-unknown-pragmas</option>-->
             </options>
             <clearDefaultOptions>true</clearDefaultOptions>

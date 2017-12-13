@@ -1,5 +1,5 @@
 #include "edu_hit_ir_ltp4j_SRL.h"
-#include "ltp/srl_dll.h"
+#include "srl/SRL_DLL.h"
 #include "string_to_jstring.hpp"
 #include <vector>
 #include <string>
