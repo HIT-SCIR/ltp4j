@@ -142,7 +142,7 @@
               <option>-Wno-conversion</option>
               <option>-Wno-shorten-64-to-32</option>
               <option>-Wno-reorder</option>
-              <!--<option>-v</option>-->
+              <option>-v</option>
               <!--<option>-Wno-unknown-pragmas</option>-->
             </options>
             <clearDefaultOptions>true</clearDefaultOptions>
