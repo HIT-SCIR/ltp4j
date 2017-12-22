@@ -135,6 +135,7 @@
             <debug>false</debug>
             <options>
               <option>-std=c++0x</option>
+              <option>-w</option>
               <!--<option>-Wall</option>
               <option>-Wno-sign-conversion</option>
               <option>-Wno-unused-variable</option>
