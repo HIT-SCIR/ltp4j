@@ -67,16 +67,6 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
   }
 
 
-  unsigned size_ners = env->CallIntMethod(array_ners,list_size);
-  for(unsigned i = 0;i<size_ners;i++){
-    jobject tmp = env->CallObjectMethod(array_ners,list_get,i);
-    jstring s = reinterpret_cast<jstring> (tmp);
-    const char * st = env->GetStringUTFChars(s,0);
-    std::string s_s(st);
-    ners.push_back(s_s);
-    env->ReleaseStringUTFChars( s, st); 
-  }
-
   unsigned size_heads = env->CallIntMethod(array_heads,list_size);
   for(unsigned i = 0; i < size_heads; i++){
     jobject tmp = env->CallObjectMethod(array_heads,list_get,i);
@@ -127,6 +117,6 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
 
 JNIEXPORT void JNICALL Java_edu_hit_ir_ltp4j_SRL_release
   (JNIEnv * env, jobject obj) {
-  SRL_ReleaseResource();
+  srl_release_resource();
 }
 

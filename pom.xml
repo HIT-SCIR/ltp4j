@@ -145,7 +145,7 @@
               <option>-v</option>
               <!--<option>-Wno-unknown-pragmas</option>-->
             </options>
-            <clearDefaultOptions>true</clearDefaultOptions>
+            <!--<clearDefaultOptions>true</clearDefaultOptions>-->
           </cpp>
           <c>
             <excludes>
