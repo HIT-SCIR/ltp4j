@@ -135,17 +135,15 @@
             <debug>false</debug>
             <options>
               <option>-std=c++0x</option>
-              <option>-Wall</option>
-              <option>-Wno-c++11-narrowing</option>
+              <!--<option>-Wall</option>
               <option>-Wno-sign-conversion</option>
               <option>-Wno-unused-variable</option>
               <option>-Wno-conversion</option>
               <option>-Wno-shorten-64-to-32</option>
-              <option>-Wno-reorder</option>
-              <option>-v</option>
+              <option>-Wno-reorder</option>-->
+              <!--<option>-v</option>-->
               <!--<option>-Wno-unknown-pragmas</option>-->
             </options>
-            <!--<clearDefaultOptions>true</clearDefaultOptions>-->
           </cpp>
           <c>
             <excludes>
