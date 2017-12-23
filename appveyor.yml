@@ -21,7 +21,7 @@ install:
 build_script:
   - git submodule init
   - git submodule update
-  - mvn
+  - mvn -Dmaven.test.skip=true
 
 cache:
   - C:\maven\
