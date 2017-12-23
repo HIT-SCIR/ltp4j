@@ -111,7 +111,6 @@
               <exclude>ltp/src/server/*</exclude>
               <exclude>ltp/src/xml4nlp/*</exclude>
               <exclude>ltp/src/unittest/*</exclude>
-              <exclude>ltp/thirdparty/boost/libs/program_options/**/*</exclude>
               <exclude>ltp/thirdparty/eigen/unsupported/**/*</exclude>
               <exclude>ltp/thirdparty/dynet/dynet/cuda.cc</exclude>
               <exclude>ltp/thirdparty/tinyxml/*</exclude>
