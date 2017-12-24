@@ -555,7 +555,7 @@ edu.ir.hit.ltp4j.SRL
     public class TestSrl {
 
     public static void main(String[] args) {
-      SRL.create("../../../ltp_data/srl");
+      SRL.create("../../../ltp_data/pisrl.model");
       ArrayList<String> words = new ArrayList<String>();
       words.add("一把手");
       words.add("亲自");
@@ -566,11 +566,6 @@ edu.ir.hit.ltp4j.SRL
       tags.add("d");
       tags.add("v");
       tags.add("wp");
-      ArrayList<String> ners = new ArrayList<String>();
-      ners.add("O");
-      ners.add("O");
-      ners.add("O");
-      ners.add("O");
       ArrayList<Integer> heads = new ArrayList<Integer>();
       heads.add(2);
       heads.add(2);
@@ -582,7 +577,7 @@ edu.ir.hit.ltp4j.SRL
       deprels.add("HED");
       deprels.add("WP");
       List<Pair<Integer, List<Pair<String, Pair<Integer, Integer>>>>> srls = new ArrayList<Pair<Integer, List<Pair<String, Pair<Integer, Integer>>>>>();
-        SRL.srl(words, tags, ners, heads, deprels, srls);
+        SRL.srl(words, tags, heads, deprels, srls);
       for (int i = 0; i < srls.size(); ++i) {
         System.out.println(srls.get(i).first + ":");
           for (int j = 0; j < srls.get(i).second.size(); ++j) {

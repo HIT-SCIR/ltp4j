@@ -373,7 +373,7 @@
     +----------------------------+--------------------------------------------------------------------+
     | 参数名                     | 参数描述                                                           |
     +============================+====================================================================+
-    | String modelPath           | 语义角色标注模型文件夹所在路径                                     |
+    | String modelPath           | 语义角色标注模型文件所在路径                                       |
     +----------------------------+--------------------------------------------------------------------+
 
 .. java:method:: public final native void release()
@@ -383,7 +383,7 @@
     释放模型文件，销毁命名实体识别器。
 
 
-.. java:method:: public final native int srl(List<String> words, List<String> tags, List<String> ners, List<Integer> heads, List<String> deprels, List<Pair<Integer, List<Pair<String, Pair<Integer, Integer>>>>> srls)
+.. java:method:: public final native int srl(List<String> words, List<String> tags, List<Integer> heads, List<String> deprels, List<Pair<Integer, List<Pair<String, Pair<Integer, Integer>>>>> srls)
 
     功能：
 
@@ -397,8 +397,6 @@
     | List<String> words                                | 输入的词序列                                              |
     +---------------------------------------------------+-----------------------------------------------------------+
     | List<String> tags                                 | 输入的词性序列                                            |
-    +---------------------------------------------------+-----------------------------------------------------------+
-    | List<String> ners                                 | 输入的命名实体序列                                        |
     +---------------------------------------------------+-----------------------------------------------------------+
     | List<Integer> heads                               | 这个词的父节点的编号 [#f1]_                               |
     +---------------------------------------------------+-----------------------------------------------------------+
