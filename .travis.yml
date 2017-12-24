@@ -6,20 +6,10 @@ os:
     - linux
     - osx
 
-before_install:
-    - sudo apt-get install cmake
+before_script:
+    - if [[ "$TRAVIS_OS_NAME" == "osx" && -z "$JAVA_HOME" && -x "/usr/libexec/java_home" ]] ; then export JAVA_HOME=$(/usr/libexec/java_home); fi
+    - git submodule init
     - git submodule update
-    - cd ltp
-    - ./configure
-    - make
-    - cd ..
-
-install:
-    - cmake -DLTP_HOME=`pwd`/ltp/ .
-    - make
-    - ant
-    - export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`/libs/:`pwd`/ltp/lib
 
 script:
-    - javac -cp "output/jar/ltp4j.jar" examples/Test.java
-    - cat examples/example | java -cp "output/jar/ltp4j.jar:examples" Test --segment-model=ltp_data/cws.model --postag-model=ltp_data/pos.model --ner-model=ltp_data/ner.model --parser-model=ltp_data/parser.model --srl-dir=ltp_data/srl/
+    - mvn -Dmaven.test.skip=true

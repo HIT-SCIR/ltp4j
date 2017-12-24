@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.8.0)
 project ("ltp4j")
 
 find_package(JNI)
-set (LTP_HOME "/path/to/your/ltp/" CACHE STRING "Use to specified ltp path")
+set (LTP_HOME "${PROJECT_SOURCE_DIR}/ltp" CACHE STRING "Use to specified ltp path") # change it to your ltp root
 set (LIBRARY_OUTPUT_PATH    ${PROJECT_SOURCE_DIR}/libs)
 set (JNI_SOURCE_DIR         ${PROJECT_SOURCE_DIR}/jni)
 

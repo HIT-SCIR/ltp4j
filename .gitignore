@@ -1,0 +1,21 @@
+
+###########
+# data    #
+###########
+ltp_data
+
+###########
+# outputs #
+###########
+output
+CMakeFiles
+cmake_install.cmake
+CmakeCache.txt
+Makefile
+libs
+target
+
+###########
+# IDEs    #
+###########
+.idea
